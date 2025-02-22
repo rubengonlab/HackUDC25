@@ -4,6 +4,10 @@ import 'package:hackudc/screens/Partida/inicio.dart';
 import 'package:hackudc/screens/Tematica/tematica.dart'; // Asegúrate de que la ruta es correcta
 
 class Preparados extends StatefulWidget {
+  final String mensaje;
+
+  const Preparados (this.mensaje, {super.key});
+
   @override
   _PreparadosState createState() => _PreparadosState();
 }
@@ -40,7 +44,7 @@ class _PreparadosState extends State<Preparados> {
         if (mounted) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => Inicio()),
+            MaterialPageRoute(builder: (context) => Inicio(widget.mensaje)),
           );
         }
       }

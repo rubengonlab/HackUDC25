@@ -67,7 +67,7 @@ class Tematica extends StatelessWidget {
                         _tematica = "peliculas";
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Dificultad(_counter, _tematica)),
+                          MaterialPageRoute(builder: (context) => Dificultad(_counter)),
                         );
                       },
                     ),
@@ -82,7 +82,7 @@ class Tematica extends StatelessWidget {
                         _tematica = "canciones";
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Dificultad(_counter, _tematica)),
+                          MaterialPageRoute(builder: (context) => Dificultad(_counter)),
                         );
                       },
                     ),
@@ -103,7 +103,7 @@ class Tematica extends StatelessWidget {
                         _tematica = "presidentes";
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Dificultad(_counter, _tematica)),
+                          MaterialPageRoute(builder: (context) => Dificultad(_counter)),
                         );
                       },
                     ),
@@ -118,7 +118,7 @@ class Tematica extends StatelessWidget {
                         _tematica = "deportes";
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Dificultad(_counter, _tematica)),
+                          MaterialPageRoute(builder: (context) => Dificultad(_counter)),
                         );
                       },
                     ),

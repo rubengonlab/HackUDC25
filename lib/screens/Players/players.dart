@@ -14,9 +14,25 @@ class _PlayersState extends State<Players> {
     setState(() {
       if (_counter > 3) {
         _counter--;
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              'El mínimo de jugadores es 3',
+              style: GoogleFonts.poppins(
+                fontSize: 16.0,
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
+              ),
+            ),
+            backgroundColor: Colors.redAccent,
+            duration: Duration(seconds: 2),
+          ),
+        );
       }
     });
   }
+
 
   void _incrementCounter() {
     setState(() {

@@ -58,6 +58,8 @@ flutter:
   assets:
     - lib/assets/hola.jpg
     - lib/assets/peliculas/titanic/imagen.jpg
+    - lib/assets/peliculas/cars/imagen.jpg
+    - lib/assets/peliculas/seven/imagen.jpg
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../presenter/presenter.dart';
 import '../Preparados/preparados.dart';
 
 
 class Dificultad extends StatelessWidget {
-  String _dificultad = "";
+  int _dificultad = 0;
   final int _counter;
-  final String _tematica;
 
-  Dificultad(this._counter, this._tematica, {super.key});
+  Dificultad(this._counter, {super.key});
 
 
   @override
@@ -59,7 +59,7 @@ class Dificultad extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   // Caja 1
-                  _buildDifficultyButton(context, "FACIL 😇", Colors.greenAccent, "FACIL"),
+                  _buildDifficultyButton(context, "FACIL 😇", Colors.greenAccent, 0),
                 ],
               ),
               const SizedBox(height: 20), // Espaciado entre las filas
@@ -67,7 +67,7 @@ class Dificultad extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   // Caja 2
-                  _buildDifficultyButton(context, "DIFICIL 🔥", Colors.orangeAccent, "DIFICIL"),
+                  _buildDifficultyButton(context, "DIFICIL 🔥", Colors.orangeAccent, 1),
                 ],
               ),
               const SizedBox(height: 20),
@@ -75,7 +75,7 @@ class Dificultad extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   // Caja 3
-                  _buildDifficultyButton(context, "EXTREMO 💣", Colors.redAccent, "EXTREMO"),
+                  _buildDifficultyButton(context, "EXTREMO 💣", Colors.redAccent, 2),
                 ],
               ),
             ],
@@ -86,15 +86,17 @@ class Dificultad extends StatelessWidget {
   }
 
   // Método para crear los botones de dificultad
-  Widget _buildDifficultyButton(BuildContext context, String label, Color color, String difficulty) {
+  Widget _buildDifficultyButton(BuildContext context, String label, Color color, int difficulty) {
     return GestureDetector(
       onTap: () {
         _dificultad = difficulty;
-        // Navegar a la pantalla de "Preparados"
+        JuegoPresentador presentador = JuegoPresentador();
+        String pelicula = presentador.iniciarJuego(_counter,_dificultad );
+        String archivo = presentador.getArchivo(pelicula);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Preparados()), // Cambiar a la pantalla Preparados
-          // MANDAR VALORES AL PRESENTADOR !!!!!!!!!!!!!!!!
+          MaterialPageRoute(builder: (context) => Preparados(archivo)), // Cambiar a la pantalla Preparados
+
         );
       },
       child: Container(

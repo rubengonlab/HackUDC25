@@ -9,34 +9,39 @@ class JuegoPresentador {
   late Challenge retoActual;
   List<String> respuestasValidas = [];
   int contador = 0;
+  late Pelicula pelicula_aleatoria;
 
-  Future<void> iniciarJuego(int numPlayers, String tematica, int dificultad) async {
-    juegoActual = new Game(numPlayers: numPlayers, topic: tematica, difficulty: dificultad);
-    await seleccionarPeliculaAleatoria(tematica);
+  JuegoPresentador();
+
+
+  String iniciarJuego(int numPlayers, int dificultad) {
+    juegoActual = Game(numPlayers: numPlayers, difficulty: dificultad);
+    seleccionarPeliculaAleatoria();
+    pelicula_aleatoria = seleccionarPeliculaAleatoria();
+    return pelicula_aleatoria.nombre;
   }
 
-  Future<void> seleccionarPeliculaAleatoria(String tematica) async {
-    final dir = Directory("assets/$tematica/");
-    List<FileSystemEntity> archivos = dir.listSync();
-    List<String> nombresPeliculas = archivos.map((e) => e.path.split('/').last).toList();
 
-    if (nombresPeliculas.isNotEmpty) {
-      String nombreSeleccionado = nombresPeliculas[Random().nextInt(nombresPeliculas.length)];
-      juegoActual.movie = new Pelicula(tematica: tematica, nombre: nombreSeleccionado);
-    }
+  Pelicula seleccionarPeliculaAleatoria() {
+    List<Pelicula> peliculas = crearPeliculas();
+
+    int indiceAleatorio = Random().nextInt(peliculas.length); // Genera un número entre 0 y 2
+    return peliculas[indiceAleatorio]; // Suponiendo que Pelicula tiene un atributo "nombre"
+
   }
 
-  String getArchivo(String dificultad) {
-    String basePath = "assets/${juegoActual.topic}/${juegoActual.movie.nombre}";
+  String getArchivo(String nombre ) {
+    int dificultad = juegoActual.difficulty;
+    String basePath = "assets/peliculas/$nombre";
     switch (dificultad) {
-      case "facil":
+      case 0:
         return "$basePath/imagen.jpg";
-      case "dificil":
+      case 1:
         return "$basePath/titulo.txt";
-      case "extremo":
+      case 2:
         return "$basePath/audio.mp3";
       default:
-        return "";
+        return "$basePath/imagen.jpg";
     }
   }
 
@@ -48,6 +53,8 @@ class JuegoPresentador {
       } while (retoActual == aux);
       retoActual = aux;
     }
+
+
     return retoActual;
   }
 
@@ -66,4 +73,16 @@ class JuegoPresentador {
   void mostrarError() {
     print("Respuesta incorrecta. Inténtalo de nuevo.");
   }
+
+  List<Pelicula> crearPeliculas(){
+    List<String> mylista=["titanic","seven", "cars"];
+    List<Pelicula> peliculas =[] ;
+    for (String pelicula in mylista){
+      peliculas.add(Pelicula(nombre: pelicula));
+    }
+    return peliculas;
+  }
 }
+
+
+
