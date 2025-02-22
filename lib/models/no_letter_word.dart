@@ -4,7 +4,7 @@ import 'package:hackudc/models/words.dart';
 class NoLetterWord extends Words {
   final String letter;
 
-  NoLetterWord({required super.entrada, required this.letter});
+  NoLetterWord({required super.enunciado, required this.letter});
 
   @override
   bool validate(String entrada){

@@ -9,7 +9,7 @@ var serverUrl = Platform.isAndroid ? "10.0.2.2" : "127.0.0.1";
 class NumWords extends Words {
   final int numWords;
 
-  NumWords({required super.entrada, required this.numWords});
+  NumWords({required super.enunciado, required this.numWords});
 
   @override
   bool validate(String entrada){

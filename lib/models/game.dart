@@ -32,3 +32,5 @@ class Game {
       default:
         throw ArgumentError("Invalid difficulty level: $difficulty");
     }
+  }
+}

@@ -9,7 +9,7 @@ var serverUrl = Platform.isAndroid ? "10.0.2.2" : "127.0.0.1";
 class StartLetterWord extends Words {
   final String letter;
 
-  StartLetterWord({required super.entrada, required this.letter});
+  StartLetterWord({required super.enunciado, required this.letter});
 
   @override
   bool validate(String entrada){

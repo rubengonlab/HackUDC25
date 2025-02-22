@@ -7,7 +7,7 @@ var serverUrl = Platform.isAndroid ? "10.0.2.2" : "127.0.0.1";
 
 abstract class Words extends Challenge {
 
-  Words({required super.entrada});
+  Words({required super.enunciado});
 
   @override
   bool validate(String entrada);
