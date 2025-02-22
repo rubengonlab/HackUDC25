@@ -1,4 +1,3 @@
-/*
 import 'dart:async';
 import 'dart:io';
 import 'dart:convert';
@@ -11,8 +10,8 @@ var serverUrl = Platform.isAndroid ? "10.0.2.2" : "127.0.0.1";
 
 class Game{
   final int numPlayers;
-  final int topic;
+  final String topic;
+  final int minutes;
 
-
-  Challenge({required this.entrada});
-}*/
+  Game({required this.numPlayers, required this.topic, required this.minutes});
+}
