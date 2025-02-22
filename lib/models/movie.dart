@@ -9,42 +9,24 @@ var serverUrl = Platform.isAndroid ? "10.0.2.2" : "127.0.0.1";
 // es la dirección IP que permite al emulador de Android acceder al localhost del ordenador que está ejecutando el emulador.
 
 
-class Movie {
-  final String _name;
-  final String _title;
-  final String _image;
-  final List<String> _restrictedWords;
+class Pelicula {
+  final String nombre;
+  late final String titulo;
+  late final String imagen;
+  late final List<String> palabrasRestringidas;
 
-  Movie._({
-    required String name,
-    required String title,
-    required String image,
-    required List<String> restrictedWords, 
-  })  : _name = name,
-        _title = title,
-        _image = image,
-        _restrictedWords = restrictedWords;
-
-  static Future<Movie> load(String name) async {
-    String title = "assets/movies/$name/title.txt";
-    String image = "assets/movies/$name/cover.jpg";
-    String wordsTxt =
-    await rootBundle.loadString("assets/movies/$name/words.txt");
-    List<String> words = wordsTxt.split('\n').map((e) => e.trim()).toList();
-
-    return Movie._(
-      name: name,
-      title: title,
-      image: image,
-      restrictedWords: words,
-    );
+  // Constructor
+  Pelicula({required this.nombre}) {
+    _loadData();
   }
 
-  // Getters
-  String get name => _name;
-  String get title => _title;
-  String get image => _image;
-  List<String> get restrictedWords => List.unmodifiable(_restrictedWords);
+  // Método privado para cargar los datos automáticamente
+  Future<void> _loadData() async {
+    titulo = "assets/peliculas/$nombre/titulo.txt";
+    imagen = "assets/peliculas/$nombre/portada.jpg";
+    String palabrasTxt = await rootBundle.loadString("assets/peliculas/$nombre/palabras.txt");
+    palabrasRestringidas = palabrasTxt.split('\n').map((e) => e.trim()).toList();
+  }
 }
 
 
