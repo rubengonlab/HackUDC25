@@ -19,7 +19,7 @@ class Movie {
     required String name,
     required String title,
     required String image,
-    required List<String> restrictedWords,
+    required List<String> restrictedWords, 
   })  : _name = name,
         _title = title,
         _image = image,
