@@ -1,8 +1,19 @@
-# 🎬 Guess the Movie - Flutter Game
+
+<div style="text-align: center;">
+  <h2>NUTTYPHONE</h2>
+</div>
+
+<div style="text-align: center;">
+  <p align="center">
+  <img src="/lib/assets/hola.jpg" alt="Descripción de la imagen" width="400" height="400"/>
+</p>
+
+</div>
+
 
 ## 📌 Descripción
 
-**Guess the Movie** es un juego interactivo y colaborativo desarrollado en **Flutter** con **Dart** en **Android Studio**. El objetivo del juego es que un equipo logre que la inteligencia artificial (IA) adivine correctamente una película basándose en descripciones dadas por los jugadores. Sin embargo, hay un giro: los jugadores deben superar diferentes pruebas que dificultan la correcta transmisión de la información, generando confusión y desafiando su creatividad.
+**Guess the Movie** es un juego interactivo y colaborativo desarrollado con el lenguaje de programación **Flutter** con **Dart** en **Android Studio**. El objetivo del juego es que un equipo logre que la inteligencia artificial (IA) adivine correctamente una película basándose en descripciones dadas por los jugadores. Sin embargo, hay un giro: los jugadores deben superar diferentes pruebas que dificultan la correcta transmisión de la información, generando confusión y desafiando su creatividad.
 
 ## 🎯 Objetivo del Juego
 
