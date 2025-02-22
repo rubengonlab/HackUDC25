@@ -11,7 +11,8 @@ var serverUrl = Platform.isAndroid ? "10.0.2.2" : "127.0.0.1";
 class Game{
   final int numPlayers;
   final String topic;
+  final int difficulty;
   final int minutes;
 
-  Game({required this.numPlayers, required this.topic, required this.minutes});
+  Game({required this.numPlayers, required this.topic, required this.difficulty, required this.minutes});
 }
