@@ -9,8 +9,11 @@ class NoLetterWord extends Words {
   @override
   bool validate(String entrada){
     List<String> words = entrada.characters.toList();
+    if (words.length!=3){
+      return false;
+    }
     for (String word in words){
-      if (word.contains(letter)) {
+      if ((word.toUpperCase()).contains(letter.toUpperCase())) {
         return false;
       }
     }

@@ -90,12 +90,12 @@ class Dificultad extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         _dificultad = difficulty;
-        JuegoPresentador presentador = JuegoPresentador();
-        String pelicula = presentador.iniciarJuego(_counter,_dificultad );
+        JuegoPresentador presentador = JuegoPresentador(); //INSTANCIA DE PRESENTADOR
+        String pelicula = presentador.iniciarJuego(_counter, _dificultad );
         String archivo = presentador.getArchivo(pelicula);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Preparados(archivo)), // Cambiar a la pantalla Preparados
+          MaterialPageRoute(builder: (context) => Preparados(archivo, presentador)), // Cambiar a la pantalla Preparados
 
         );
       },

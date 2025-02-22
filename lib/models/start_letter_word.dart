@@ -14,8 +14,11 @@ class StartLetterWord extends Words {
   @override
   bool validate(String entrada){
     List<String> words = entrada.characters.toList();
+    if (words.length!=3){
+      return false;
+    }
     for (String word in words){
-      if (!word.startsWith(letter)) {
+      if (!(word.toUpperCase()).startsWith(letter.toUpperCase())) {
         return false;
       }
     }

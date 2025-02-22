@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hackudc/presenter/presenter.dart';
 
 import 'mitad.dart';
 
@@ -8,11 +9,13 @@ class Espera extends StatefulWidget {
   final String? imagePath;
   final String? pregunta;
   final String? respuestaPrev;
+  final JuegoPresentador presenter;
 
   const Espera({
     this.imagePath,
     this.pregunta,
     this.respuestaPrev,
+    required this.presenter,
     Key? key,
   }) : super(key: key);
 
@@ -67,6 +70,7 @@ class _EsperaState extends State<Espera> with SingleTickerProviderStateMixin {
           imagePath: widget.imagePath,
           pregunta: widget.pregunta,
           respuestaPrev: widget.respuestaPrev,
+          presenter: widget.presenter,
         ),
       ),
     );

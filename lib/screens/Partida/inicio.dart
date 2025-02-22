@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hackudc/presenter/presenter.dart';
 import 'mitad.dart';
 
 class Inicio extends StatefulWidget {
   final String mensage;
+  final JuegoPresentador presenter;
 
-  const Inicio(this.mensage, {super.key});
+  const Inicio(this.mensage, this.presenter, {super.key});
 
   @override
   _Inicio createState() => _Inicio();
@@ -19,6 +21,8 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
   double _progress = 1.0; // Progreso inicial del spinner
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
+
+
 
   @override
   void initState() {
@@ -68,6 +72,7 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
           imagePath: filePath!,
           pregunta: "",
           respuestaPrev: "",
+          presenter: widget.presenter
         ),
       ),
     );

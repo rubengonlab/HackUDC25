@@ -1,6 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hackudc/presenter/presenter.dart';
+import 'package:hackudc/screens/Home/MyHomePage.dart';
+import 'package:hackudc/screens/Players/players.dart';
+import 'package:hackudc/screens/Tematica/tematica.dart';
+
 
 import 'espera.dart'; // Asegúrate de agregar este paquete en tu pubspec.yaml
 
@@ -8,8 +13,10 @@ class Mitad extends StatefulWidget {
   final String? imagePath;
   final String? pregunta;
   final String? respuestaPrev;
+  final JuegoPresentador presenter;
 
   const Mitad({
+    required this.presenter,
     this.imagePath,
     this.pregunta,
     this.respuestaPrev,
@@ -22,7 +29,7 @@ class Mitad extends StatefulWidget {
 
 class _MitadState extends State<Mitad> {
   late TextEditingController _controller;
-  int _counter = 30;
+  int _counter = 40;
   late Timer _timer;
   late String textoDescripcion;
 
@@ -30,7 +37,7 @@ class _MitadState extends State<Mitad> {
   void initState() {
     super.initState();
     _controller = TextEditingController();
-    textoDescripcion = "Nueva preguntaaaaaaaaaaaa";///LLAMAR FUNCIÓN DEL PRESENTADOR
+    textoDescripcion = widget.presenter.getReto(context);
     _startCountdown();
   }
 
@@ -48,6 +55,21 @@ class _MitadState extends State<Mitad> {
   }
 
   void _reloadScreen() {
+
+    if(!widget.presenter.validarRespuesta(_controller.text)){
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            "Error al introducir los datos",
+            style: TextStyle(fontSize: 16), // Tamaño del texto
+          ),
+          backgroundColor: Colors.red, // Fondo rojo para indicar error
+          duration: Duration(seconds: 2), // Duración de 2 segundos
+        ),
+      );
+      return;
+    }
+
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
@@ -55,6 +77,7 @@ class _MitadState extends State<Mitad> {
           imagePath: null,
           pregunta: textoDescripcion,
           respuestaPrev: _controller.text,
+          presenter: widget.presenter,
         ),
       ),
     );
@@ -103,7 +126,7 @@ class _MitadState extends State<Mitad> {
                   Text(
                     "Jugador anterior:",
                     style: GoogleFonts.poppins(
-                      fontSize: 50.0,
+                      fontSize: 30.0,
                       fontWeight: FontWeight.w900,
                       color: Colors.white,
                       letterSpacing: 3.0,

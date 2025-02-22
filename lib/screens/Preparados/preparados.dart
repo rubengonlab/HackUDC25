@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hackudc/screens/Partida/inicio.dart';
 import 'package:hackudc/screens/Tematica/tematica.dart'; // Asegúrate de que la ruta es correcta
+import 'package:hackudc/presenter/presenter.dart';
 
 class Preparados extends StatefulWidget {
   final String mensaje;
+  final JuegoPresentador presenter;
 
-  const Preparados (this.mensaje, {super.key});
+  const Preparados (this.mensaje, this.presenter, {super.key});
 
   @override
   _PreparadosState createState() => _PreparadosState();
@@ -44,7 +46,7 @@ class _PreparadosState extends State<Preparados> {
         if (mounted) {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => Inicio(widget.mensaje)),
+            MaterialPageRoute(builder: (context) => Inicio(widget.mensaje, widget.presenter)),
           );
         }
       }
