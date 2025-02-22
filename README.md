@@ -58,7 +58,7 @@ Los jugadores describen una película en turnos, pero cada uno debe enfrentarse 
     flutter pub get
  3. Instalar dependencias:
     ```bash
-    flutter run **
+    flutter run 
 
 
 ## Como puedo solucionar un problema 
