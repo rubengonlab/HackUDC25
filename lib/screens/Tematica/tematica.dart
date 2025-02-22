@@ -8,6 +8,24 @@ class Tematica extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF4B2D84), // Morado oscuro que combina con el gradiente de fondo
+        elevation: 5, // Sombra sutil para dar profundidad
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white), // Icono de flecha atrás en blanco
+          onPressed: () {
+            Navigator.pop(context); // Vuelve a la pantalla anterior
+          },
+        ),
+        title: Text(
+          'Temática', // Título del AppBar
+          style: GoogleFonts.poppins(
+            fontSize: 24.0,
+            fontWeight: FontWeight.w600,
+            color: Colors.white, // Texto blanco para buena visibilidad
+          ),
+        ),
+      ),
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -22,7 +40,7 @@ class Tematica extends StatelessWidget {
             children: <Widget>[
               // Título más grande y estilizado, ahora centrado horizontalmente
               Text(
-                'ELIJA LA TEMATICA',
+                'ELIJE TEMÁTICA',
                 style: GoogleFonts.poppins(
                   fontSize: 50.0, // Más grande para que se vea más destacado
                   fontWeight: FontWeight.w900, // Negrita para hacerlo más llamativo
@@ -36,17 +54,34 @@ class Tematica extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  _buildThematicButton(
-                    context,
-                    "Películas",
-                    Colors.purpleAccent,
-                        () {
-                      _tematica = "Peliculas";
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Dificultad()),
-                      );
-                    },
+                  Expanded(
+                    child: _buildThematicButton(
+                      context,
+                      "Películas",
+                      Colors.purpleAccent,
+                          () {
+                        _tematica = "Peliculas";
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Dificultad()),
+                        );
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 10), // Espacio entre los botones
+                  Expanded(
+                    child: _buildThematicButton(
+                      context,
+                      "Canciones",
+                      Colors.orangeAccent,
+                          () {
+                        _tematica = "Canciones";
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Dificultad()),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -55,36 +90,34 @@ class Tematica extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  _buildThematicButton(
-                    context,
-                    "Canciones",
-                    Colors.orangeAccent,
-                        () {
-                      _tematica = "Canciones";
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Dificultad()),
-                      );
-                    },
+                  Expanded(
+                    child: _buildThematicButton(
+                      context,
+                      "Presidentes",
+                      Colors.greenAccent,
+                          () {
+                        _tematica = "Presidentes";
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Dificultad()),
+                        );
+                      },
+                    ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 20), // Espaciado entre las filas
-              // Fila 3
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  _buildThematicButton(
-                    context,
-                    "Presidentes",
-                    Colors.greenAccent,
-                        () {
-                      _tematica = "Presidentes";
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Dificultad()),
-                      );
-                    },
+                  const SizedBox(width: 10), // Espacio entre los botones
+                  Expanded(
+                    child: _buildThematicButton(
+                      context,
+                      "Deportes", // Nueva temática añadida
+                      Colors.yellow,
+                          () {
+                        _tematica = "Deportes";
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Dificultad()),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -99,9 +132,8 @@ class Tematica extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: 300.0,
-        height: 150.0,
-        margin: const EdgeInsets.all(10.0),
+        margin: const EdgeInsets.symmetric(horizontal: 10.0), // Ajuste de margen
+        height: 120.0, // Ajuste de la altura
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [color.withOpacity(0.7), color],
@@ -121,7 +153,7 @@ class Tematica extends StatelessWidget {
           child: Text(
             label,
             style: GoogleFonts.poppins(
-              fontSize: 24.0,
+              fontSize: 20.0, // Ajuste el tamaño de la fuente
               fontWeight: FontWeight.w600,
               color: Colors.white,
             ),

@@ -1,139 +1,124 @@
-// Nueva pantalla de Tematica
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hackudc/screens/Players/players.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../Preparados/preparados.dart';
+
 
 class Dificultad extends StatelessWidget {
-
   String _dificultad = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'NIVEL DE DIFICULTAD   ',
-              style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+      appBar: AppBar(
+        backgroundColor: Color(0xFF6A11CB), // Fondo similar al de la pantalla de Temática
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Navegar hacia atrás
+          },
+        ),
+        title: Text(
+          'Dificultad', // Título del AppBar
+          style: GoogleFonts.poppins(
+            fontSize: 24.0,
+            fontWeight: FontWeight.w600,
+            color: Colors.white, // Texto blanco para buena visibilidad
+          ),
+        ),
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF6A11CB), Color(0xFF2575FC)], // Morado a Azul
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'NIVEL DE DIFICULTAD',
+                style: GoogleFonts.poppins(
+                  fontSize: 50.0, // Más grande para que se vea más destacado
+                  fontWeight: FontWeight.w900, // Negrita para hacerlo más llamativo
+                  color: Colors.white,
+                  letterSpacing: 3.0, // Espaciado entre letras para mayor impacto
+                ),
+                textAlign: TextAlign.center,
               ),
-            ),
-            const SizedBox(height: 70),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // Caja 1
-                Container(
-                    width: 300.0,
-                    height: 150.0,
-                    margin: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _dificultad = "FACIL";
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent, // Color de fondo
-                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40), // Tamaño
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Bordes redondeados
-                        ),
-                      ),
-                      child: const Text(
-                        "FACIL 😇",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-                ),
-                // Caja 2
+              const SizedBox(height: 70),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  // Caja 1
+                  _buildDifficultyButton(context, "FACIL 😇", Colors.greenAccent, "FACIL"),
+                ],
+              ),
+              const SizedBox(height: 20), // Espaciado entre las filas
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  // Caja 2
+                  _buildDifficultyButton(context, "DIFICIL 🔥", Colors.orangeAccent, "DIFICIL"),
+                ],
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  // Caja 3
+                  _buildDifficultyButton(context, "EXTREMO 💣", Colors.redAccent, "EXTREMO"),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // Caja 3
-                Container(
-                    width: 300.0,
-                    height: 150.0,
-                    margin: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Acción al presionar el botón
-                        _dificultad= "DIFICIL";
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent, // Color de fondo
-                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40), // Tamaño
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Bordes redondeados
-                        ),
-                      ),
-                      child: const Text(
-                        "DIFICIL 🔥",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-                ),
-                // Caja 4
-
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // Caja 3
-                Container(
-                    width: 300.0,
-                    height: 150.0,
-                    margin: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Acción al presionar el botón
-                        _dificultad = "EXTREMO ";
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blueAccent, // Color de fondo
-                        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40), // Tamaño
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Bordes redondeados
-                        ),
-                      ),
-                      child: const Text(
-                        "EXTREMO 💣",
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-
-                ),
-                // Caja 4
-
-              ],
+  // Método para crear los botones de dificultad
+  Widget _buildDifficultyButton(BuildContext context, String label, Color color, String difficulty) {
+    return GestureDetector(
+      onTap: () {
+        _dificultad = difficulty;
+        // Navegar a la pantalla de "Preparados"
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Preparados()), // Cambiar a la pantalla Preparados
+        );
+      },
+      child: Container(
+        width: 300.0,
+        height: 150.0,
+        margin: const EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [color.withOpacity(0.7), color],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(15.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.4),
+              offset: const Offset(2, 4),
+              blurRadius: 10,
             ),
           ],
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: const TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );
