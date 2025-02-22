@@ -3,6 +3,7 @@ import 'package:hackudc/models/movie.dart';
 import 'package:hackudc/models/game.dart';
 import 'package:hackudc/models/challenge.dart';
 import 'package:hackudc/models/no_letter_word.dart';
+import 'package:hackudc/models/ai_service.dart';
 import 'dart:math';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -124,7 +125,17 @@ class JuegoPresentador {
 
     return retos;
   }
-}
 
+
+  static String get_title_ai(String description) {
+    String prompt = "Adivina el título de la película que trata sobre " + description + " . Devuelve sólo el título conciso."
+  
+    HuggingFaceService hfService = HuggingFaceService();
+    String response = await hfService.getAIResponse(prompt);
+
+    return response;
+  }
+
+}
 
 
