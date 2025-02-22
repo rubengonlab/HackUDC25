@@ -54,7 +54,7 @@ class Dificultad extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 70),
+              const SizedBox(height: 60),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -62,7 +62,7 @@ class Dificultad extends StatelessWidget {
                   _buildDifficultyButton(context, "FACIL 😇", Colors.greenAccent, 0),
                 ],
               ),
-              const SizedBox(height: 20), // Espaciado entre las filas
+              const SizedBox(height: 10), // Espaciado entre las filas
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -70,7 +70,7 @@ class Dificultad extends StatelessWidget {
                   _buildDifficultyButton(context, "DIFICIL 🔥", Colors.orangeAccent, 1),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
