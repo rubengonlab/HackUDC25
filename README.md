@@ -13,7 +13,7 @@
 
 ## 📌 Descripción
 
-**Guess the Movie** es un juego interactivo y colaborativo desarrollado con el lenguaje de programación **Flutter** con **Dart** en **Android Studio**. El objetivo del juego es que un equipo logre que la inteligencia artificial (IA) adivine correctamente una película basándose en descripciones dadas por los jugadores. Sin embargo, hay un giro: los jugadores deben superar diferentes pruebas que dificultan la correcta transmisión de la información, generando confusión y desafiando su creatividad.
+**NUTTYPHONE** es un juego interactivo y colaborativo desarrollado con el lenguaje de programación **Flutter** con **Dart** en **Android Studio**. El objetivo del juego es que un equipo logre que la inteligencia artificial (IA) adivine correctamente una película basándose en descripciones dadas por los jugadores. Sin embargo, hay un giro: los jugadores deben superar diferentes pruebas que dificultan la correcta transmisión de la información, generando confusión y desafiando su creatividad.
 
 ## 🎯 Objetivo del Juego
 
@@ -53,3 +53,36 @@ Los jugadores describen una película en turnos, pero cada uno debe enfrentarse 
    ```bash
    git clone https://github.com/tuusuario/guess-the-movie.git
    cd guess-the-movie
+ 2. Instalar dependencias:
+    ```bash
+    flutter pub get
+ 3. Instalar dependencias:
+    ```bash
+    flutter run **
+
+
+## Como puedo solucionar un problema 
+- Revisa la documentación oficial de Flutter y Dart.
+- Consulta los errores en la terminal y busca soluciones en foros como Stack Overflow.
+- Reporta el problema en la sección de Issues del repositorio en GitHub.
+- Si tienes una solución, crea un Pull Request con la corrección
+  
+## Como puedo colaborar 
+- Compariento los buggs y errores que encuentres
+- Proponiendo nuevas soluciones o mejoras
+- Subiendo vuestros propios commits al repositorio 
+
+## Quienes han contribuido 
+- Alumnos de la unviersidad de la coruña
+- Miembros del G-PUL
+
+
+## Que licencia usamos  
+Utilizamos la licencia de código abiede Apache 2.0. 
+
+Los motivos por los cuales nos decantamos por esta eleccion : 
+- Permite modificar y distribuir permitiendo que otros empresas utilicen el propio software.
+- Uso comercial muy extendido.
+- Incluye Protección de patentes
+- Claridad legal y simple.
+- Compatibilidad con otras licencias , con lo que son facilmente integrables con otras en el futuro.
