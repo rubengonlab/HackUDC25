@@ -7,6 +7,7 @@ var serverUrl = Platform.isAndroid ? "10.0.2.2" : "127.0.0.1";
 abstract class Challenge {
 
   final String enunciado;
+  late final String oldAnswer;
 
   Challenge({required this.enunciado});
 

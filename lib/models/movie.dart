@@ -16,14 +16,14 @@ class Pelicula {
   late final List<String> palabrasRestringidas;
 
   // Constructor
-  Pelicula({required this.nombre}) {
-    _loadData();
+  Pelicula({tematica, required this.nombre}) {
+    _loadData(tematica);
   }
 
   // Método privado para cargar los datos automáticamente
-  Future<void> _loadData() async {
-    titulo = "assets/peliculas/$nombre/titulo.txt";
-    imagen = "assets/peliculas/$nombre/portada.jpg";
+  Future<void> _loadData(tematica) async {
+    titulo = "assets/$tematica/$nombre/titulo.txt";
+    imagen = "assets/$tematica/$nombre/portada.jpg";
     String palabrasTxt = await rootBundle.loadString("assets/peliculas/$nombre/palabras.txt");
     palabrasRestringidas = palabrasTxt.split('\n').map((e) => e.trim()).toList();
   }
