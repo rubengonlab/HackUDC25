@@ -4,6 +4,10 @@ import 'package:hackudc/screens/Dificultad/Dificultad.dart';
 
 class Tematica extends StatelessWidget {
   String _tematica = "";
+  final int _counter;
+
+  Tematica(this._counter, {super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +64,10 @@ class Tematica extends StatelessWidget {
                       "Películas",
                       Colors.purpleAccent,
                           () {
-                        _tematica = "Peliculas";
+                        _tematica = "peliculas";
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Dificultad()),
+                          MaterialPageRoute(builder: (context) => Dificultad(_counter, _tematica)),
                         );
                       },
                     ),
@@ -75,10 +79,10 @@ class Tematica extends StatelessWidget {
                       "Canciones",
                       Colors.orangeAccent,
                           () {
-                        _tematica = "Canciones";
+                        _tematica = "canciones";
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Dificultad()),
+                          MaterialPageRoute(builder: (context) => Dificultad(_counter, _tematica)),
                         );
                       },
                     ),
@@ -96,10 +100,10 @@ class Tematica extends StatelessWidget {
                       "Presidentes",
                       Colors.greenAccent,
                           () {
-                        _tematica = "Presidentes";
+                        _tematica = "presidentes";
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Dificultad()),
+                          MaterialPageRoute(builder: (context) => Dificultad(_counter, _tematica)),
                         );
                       },
                     ),
@@ -111,10 +115,10 @@ class Tematica extends StatelessWidget {
                       "Deportes", // Nueva temática añadida
                       Colors.yellow,
                           () {
-                        _tematica = "Deportes";
+                        _tematica = "deportes";
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Dificultad()),
+                          MaterialPageRoute(builder: (context) => Dificultad(_counter, _tematica)),
                         );
                       },
                     ),

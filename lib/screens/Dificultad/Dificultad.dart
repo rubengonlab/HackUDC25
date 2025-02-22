@@ -6,6 +6,11 @@ import '../Preparados/preparados.dart';
 
 class Dificultad extends StatelessWidget {
   String _dificultad = "";
+  final int _counter;
+  final String _tematica;
+
+  Dificultad(this._counter, this._tematica, {super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +94,7 @@ class Dificultad extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => Preparados()), // Cambiar a la pantalla Preparados
+          // MANDAR VALORES AL PRESENTADOR !!!!!!!!!!!!!!!!
         );
       },
       child: Container(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hackudc/screens/Partida/inicio.dart';
 
 class Preparados extends StatefulWidget {
   @override
@@ -7,7 +8,7 @@ class Preparados extends StatefulWidget {
 }
 
 class _PreparadosState extends State<Preparados> {
-  bool _showCountdown = false;  // Variable para controlar la visibilidad del contador
+  bool _showCountdown = false;
   int _counter = 3;
 
   @override
@@ -16,31 +17,31 @@ class _PreparadosState extends State<Preparados> {
     _startCountdownSequence();
   }
 
-  // Método para iniciar la secuencia de la pantalla
   void _startCountdownSequence() {
-    // Mostrar el contador después de un retraso
     Future.delayed(const Duration(seconds: 1), () {
       setState(() {
-        _showCountdown = true;  // Hacer visible el contador
+        _showCountdown = true;
       });
-      _startCountdown();  // Iniciar el contador
+      _startCountdown();
     });
   }
 
-  // Método para manejar el conteo regresivo
   void _startCountdown() {
     Future.delayed(const Duration(seconds: 1), () {
       if (_counter > 1) {
         setState(() {
           _counter--;
         });
-        _startCountdown();  // Llamar recursivamente para continuar el contador
+        _startCountdown();
       } else {
-        // Cuando llegue a 1, navega a la siguiente pantalla
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => NextScreen()),
-        );
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => MediaPlayer()),
+            );
+          }
+        });
       }
     });
   }
@@ -48,7 +49,6 @@ class _PreparadosState extends State<Preparados> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Fondo con gradiente de colores personalizados
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -61,20 +61,17 @@ class _PreparadosState extends State<Preparados> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Primero se muestra "Preparados"
               Text(
                 'Preparados',
                 style: GoogleFonts.poppins(
                   fontSize: 50.0,
                   fontWeight: FontWeight.w900,
                   color: Colors.white,
-                  fontStyle: FontStyle.italic,  // Estilo oblicuo
+                  fontStyle: FontStyle.italic,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 50), // Espaciado entre "Preparados" y el contador
-
-              // Si se debe mostrar el contador, lo mostramos
+              const SizedBox(height: 50),
               if (_showCountdown)
                 Text(
                   '$_counter',
@@ -87,18 +84,6 @@ class _PreparadosState extends State<Preparados> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-// Aquí puedes reemplazar `NextScreen` por el nombre de la pantalla a la que quieras navegar.
-class NextScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('¡Bienvenido a la siguiente pantalla!'),
       ),
     );
   }

@@ -29,7 +29,7 @@ class _PlayersState extends State<Players> {
   void _onReadyPressed() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Tematica()),
+      MaterialPageRoute(builder: (context) => Tematica(_counter)),
     );
   }
 
