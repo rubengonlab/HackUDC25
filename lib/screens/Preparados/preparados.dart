@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hackudc/screens/Partida/inicio.dart';
+import 'package:hackudc/screens/Tematica/tematica.dart'; // Asegúrate de que la ruta es correcta
 
 class Preparados extends StatefulWidget {
   @override
@@ -28,20 +29,20 @@ class _PreparadosState extends State<Preparados> {
 
   void _startCountdown() {
     Future.delayed(const Duration(seconds: 1), () {
+      print('Countdown: $_counter'); // Log para verificar el valor del contador
       if (_counter > 1) {
         setState(() {
           _counter--;
         });
         _startCountdown();
       } else {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (mounted) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => MediaPlayer()),
-            );
-          }
-        });
+        print('Countdown reached 1'); // Log para verificar que el contador llegó a 1
+        if (mounted) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => Inicio()),
+          );
+        }
       }
     });
   }
