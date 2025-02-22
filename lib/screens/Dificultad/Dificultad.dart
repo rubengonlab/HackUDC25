@@ -1,12 +1,11 @@
 // Nueva pantalla de Tematica
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hackudc/screens/Dificultad/Dificultad.dart';
 import 'package:hackudc/screens/Players/players.dart';
 
-class Tematica extends StatelessWidget {
+class Dificultad extends StatelessWidget {
 
-  String _tematica = "";
+  String _dificultad = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +14,7 @@ class Tematica extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'ELIJA LA TEMATICA  ',
+              'NIVEL DE DIFICULTAD   ',
               style: TextStyle(
                 fontSize: 20.0,
                 color: Colors.black,
@@ -28,20 +27,16 @@ class Tematica extends StatelessWidget {
               children: <Widget>[
                 // Caja 1
                 Container(
-                  width: 300.0,
-                  height: 150.0,
-                  margin: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    color: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
+                    width: 300.0,
+                    height: 150.0,
+                    margin: const EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
                     child: ElevatedButton(
                       onPressed: () {
-                        _tematica = "Peliculas";
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context)=> Dificultad() ),
-                        );
+                        _dificultad = "FACIL";
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blueAccent, // Color de fondo
@@ -51,7 +46,7 @@ class Tematica extends StatelessWidget {
                         ),
                       ),
                       child: const Text(
-                        "Películas",
+                        "FACIL 😇",
                         style: TextStyle(
                           fontSize: 20.0,
                           color: Colors.white,
@@ -68,21 +63,17 @@ class Tematica extends StatelessWidget {
               children: <Widget>[
                 // Caja 3
                 Container(
-                  width: 300.0,
-                  height: 150.0,
-                  margin: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    color: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
+                    width: 300.0,
+                    height: 150.0,
+                    margin: const EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
                     child: ElevatedButton(
                       onPressed: () {
                         // Acción al presionar el botón
-                        _tematica= "Canciones";
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context)=> Dificultad() ),
-                        );
+                        _dificultad= "DIFICIL";
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blueAccent, // Color de fondo
@@ -92,7 +83,7 @@ class Tematica extends StatelessWidget {
                         ),
                       ),
                       child: const Text(
-                        "Canciones",
+                        "DIFICIL 🔥",
                         style: TextStyle(
                           fontSize: 20.0,
                           color: Colors.white,
@@ -109,21 +100,17 @@ class Tematica extends StatelessWidget {
               children: <Widget>[
                 // Caja 3
                 Container(
-                  width: 300.0,
-                  height: 150.0,
-                  margin: const EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    color: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
+                    width: 300.0,
+                    height: 150.0,
+                    margin: const EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      color: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
                     child: ElevatedButton(
                       onPressed: () {
                         // Acción al presionar el botón
-                        _tematica = "Presidentes";
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context)=> Dificultad() ),
-                        );
+                        _dificultad = "EXTREMO ";
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blueAccent, // Color de fondo
@@ -133,7 +120,7 @@ class Tematica extends StatelessWidget {
                         ),
                       ),
                       child: const Text(
-                        "Presidentes",
+                        "EXTREMO 💣",
                         style: TextStyle(
                           fontSize: 20.0,
                           color: Colors.white,
