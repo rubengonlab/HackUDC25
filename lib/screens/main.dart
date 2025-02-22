@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
             CircleAvatar(
               radius: 150.0,
               backgroundColor: Colors.transparent, // Fondo transparente
-              backgroundImage: AssetImage('assets/hola.jpg'), // Ruta de la imagen en assets
+              backgroundImage: AssetImage('lib/assets/hola.jpg'), // Ruta de la imagen en assets
             ),
           ],
         ),
