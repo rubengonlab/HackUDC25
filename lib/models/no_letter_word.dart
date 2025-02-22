@@ -8,7 +8,7 @@ class NoLetterWord extends Words {
   @override
   bool validate(String entrada) {
     List<String> words = entrada.split(" ");
-    if (words.length!=3) {
+    if (words.length!=2) {
       return false;
     }
 
