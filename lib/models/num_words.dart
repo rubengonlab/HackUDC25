@@ -12,8 +12,8 @@ class NumWords extends Words {
   NumWords({required super.enunciado, required this.numWords});
 
   @override
-  bool validate(String entrada){
-    List<String> words = entrada.characters.toList();
+  bool validate(String entrada) {
+    List<String> words = entrada.split(" ");
     return words.length == numWords;
   }
 

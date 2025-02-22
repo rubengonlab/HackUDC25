@@ -146,8 +146,8 @@ class NextScreen extends StatelessWidget {
         title: const Text('Nueva Pantalla'),
         backgroundColor: Colors.blue,
       ),
-      body: Center(
-        child: const Text('¡Bienvenido a la siguiente pantalla!',
+      body: const Center(
+        child: Text('¡Bienvenido a la siguiente pantalla!',
             style: TextStyle(fontSize: 24)),
       ),
     );

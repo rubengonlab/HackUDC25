@@ -44,7 +44,7 @@ class Tematica extends StatelessWidget {
             children: <Widget>[
               // Título más grande y estilizado, ahora centrado horizontalmente
               Text(
-                'ELIJE TEMÁTICA',
+                'ELIGE TEMÁTICA',
                 style: GoogleFonts.poppins(
                   fontSize: 50.0, // Más grande para que se vea más destacado
                   fontWeight: FontWeight.w900, // Negrita para hacerlo más llamativo

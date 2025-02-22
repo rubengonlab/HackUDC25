@@ -2,12 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hackudc/presenter/presenter.dart';
-import 'package:hackudc/screens/Home/MyHomePage.dart';
-import 'package:hackudc/screens/Players/players.dart';
-import 'package:hackudc/screens/Tematica/tematica.dart';
-
-
-import 'espera.dart'; // Asegúrate de agregar este paquete en tu pubspec.yaml
+import 'espera.dart';
 
 class Mitad extends StatefulWidget {
   final String? imagePath;

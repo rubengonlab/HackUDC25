@@ -17,13 +17,12 @@ class JuegoPresentador {
   late Challenge retoActual;
   List<String> respuestasValidas = [];
   List<Challenge> retos = [];
-  int contador=0;
+  int contador = 1;
   late Pelicula pelicula_aleatoria;
 
   JuegoPresentador(); // Constructor vacío
 
   String iniciarJuego(int numPlayers, int dificultad) {
-    contador = 0;
     retoActual = Emoji(enunciado: "pepepe");
     juegoActual = Game(numPlayers: numPlayers, difficulty: dificultad);
     seleccionarPeliculaAleatoria();
@@ -65,33 +64,31 @@ class JuegoPresentador {
       } while (retoActual == aux);
       retoActual = aux;
     } else {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Fin(
-              preguntaAnterior: retoActual.enunciado,
-              respuestaAnterior: retoActual.oldAnswer), // PASAR PREGUNTA Y RESPUEST ANTERIOR
-        ),
-      );
+      WidgetsBinding.instance.addPostFrameCallback((_) { //NECESARIA YA QUE REALIZAMOS UNA LLAMADA ASÍNCRONA dentro del método init de _Medio
+        if (context.mounted) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Fin(
+                  preguntaAnterior: retoActual.enunciado,
+                  respuestaAnterior: retoActual.oldAnswer),
+            ),
+          );
+        }
+      });
     }
     return retoActual.enunciado;
   }
 
   bool validarRespuesta(String respuesta) {
     if (retoActual.validate(respuesta)) {
-      print(contador);
       respuestasValidas.add(respuesta);
       contador = contador + 1;
       retoActual.oldAnswer = respuesta;
       return true;
     } else {
-      mostrarError();
       return false;
     }
-  }
-
-  void mostrarError() {
-    print("Respuesta incorrecta. Inténtalo de nuevo.");
   }
 
 

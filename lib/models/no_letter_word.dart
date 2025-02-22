@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:hackudc/models/words.dart';
 
 class NoLetterWord extends Words {
@@ -7,11 +6,12 @@ class NoLetterWord extends Words {
   NoLetterWord({required super.enunciado, required this.letter});
 
   @override
-  bool validate(String entrada){
-    List<String> words = entrada.characters.toList();
-    if (words.length!=3){
+  bool validate(String entrada) {
+    List<String> words = entrada.split(" ");
+    if (words.length!=3) {
       return false;
     }
+
     for (String word in words){
       if ((word.toUpperCase()).contains(letter.toUpperCase())) {
         return false;

@@ -13,7 +13,7 @@ class StartLetterWord extends Words {
 
   @override
   bool validate(String entrada){
-    List<String> words = entrada.characters.toList();
+    List<String> words = entrada.split(" ");
     if (words.length!=3){
       return false;
     }

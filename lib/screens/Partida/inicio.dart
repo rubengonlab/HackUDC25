@@ -54,7 +54,7 @@ class _Inicio extends State<Inicio> with SingleTickerProviderStateMixin {
       if (_counter > 1) {
         setState(() {
           _counter--;
-          _progress = _counter / 5; // Progreso dinámico
+          _progress = _counter / 5;
         });
       } else {
         _timer?.cancel();
