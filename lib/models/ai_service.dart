@@ -13,7 +13,7 @@ class HuggingFaceService {
       Uri.parse(apiUrl),
       headers: {
         'Content-Type' : 'application/json',
-        'Authorization' : 'Bearer $apiKey',
+        'Authorization' : 'Bearer $apikey',
       },
       body: utf8.encode(jsonEncode({
         "inputs": userDescription,

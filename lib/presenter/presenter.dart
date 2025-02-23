@@ -5,7 +5,6 @@ import 'package:hackudc/models/challenge.dart';
 import 'package:hackudc/models/no_letter_word.dart';
 import 'package:hackudc/models/ai_service.dart';
 import 'dart:math';
-import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:hackudc/models/num_words.dart';
@@ -72,7 +71,8 @@ class JuegoPresentador {
             MaterialPageRoute(
               builder: (context) => Fin(
                   preguntaAnterior: retoActual.enunciado,
-                  respuestaAnterior: retoActual.oldAnswer),
+                  respuestaAnterior: retoActual.oldAnswer,
+                  filmname: pelicula_aleatoria.nombre,),
             ),
           );
         }
@@ -115,20 +115,20 @@ class JuegoPresentador {
     List<String> letrasMasComunes = ['A', 'C', 'E', 'P', 'L', 'M', 'D', 'R', 'T', 'S'];
     int indice = Random().nextInt(letrasMasComunes.length);
     String letra = letrasMasComunes[indice];
-    Challenge start_letter = new StartLetterWord(enunciado: "Describe la película con 3 palabras que comiencen por '$letra'", letter: letra);
+    Challenge start_letter = new StartLetterWord(enunciado: "Describe la película con 2 palabras que comiencen por '$letra'", letter: letra);
     retos.add(start_letter);
 
     indice = Random().nextInt(letrasMasComunes.length);
     letra = letrasMasComunes[indice];
-    Challenge no_letter = new NoLetterWord(enunciado: "Describe la película con 3 palabras que no puedan contener la letra '$letra'", letter: letra);
+    Challenge no_letter = new NoLetterWord(enunciado: "Describe la película con 2 palabras que no puedan contener la letra '$letra'", letter: letra);
     retos.add(no_letter);
 
     return retos;
   }
 
 
-  static String get_title_ai(String description) {
-    String prompt = "Adivina el título de la película que trata sobre " + description + " . Devuelve sólo el título conciso."
+  static Future<String> get_title_ai(String description) async {
+    String prompt = "Adivina el título de la película que trata sobre " + description + " . Devuelve sólo el título conciso.";
   
     HuggingFaceService hfService = HuggingFaceService();
     String response = await hfService.getAIResponse(prompt);

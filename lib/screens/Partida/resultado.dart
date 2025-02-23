@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hackudc/presenter/presenter.dart';
 import '../Players/players.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class Resultado extends StatelessWidget {
   final String description;
+  final String filmname;
 
-  const Resultado({super.key, required this.description});
+  const Resultado({super.key, required this.description, required this.filmname});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class Resultado extends StatelessWidget {
             const SizedBox(height: 10),
             // Mensaje adicional
             Text(
-              "La película correcta era ... ", //LEER DEL FICHERO lib/assets/peliculas/<<peli>>/titulo.txt
+              "La película correcta es ... ${filmname.toUpperCase()}", //LEER DEL FICHERO lib/assets/peliculas/<<peli>>/titulo.txt
               style: GoogleFonts.poppins(
                 fontSize: 22.0,
                 fontWeight: FontWeight.w500,
@@ -47,18 +48,38 @@ class Resultado extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
-            // Mostrar la descripción ingresada
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-              child: Text(
-                "La película que la IA ha entendido es ...", // LLAMAR AL MÉTODO QUE HACE LA LLAMADA A LA API CON LA DESCRIPCIÓN
-                style: GoogleFonts.poppins(
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white70,
-                ),
-                textAlign: TextAlign.center,
-              ),
+            // FutureBuilder para obtener el título de la IA
+            FutureBuilder<String>(
+              future: JuegoPresentador.get_title_ai(description), // Llamada asincrónica
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  // Mientras se espera la respuesta
+                  return const CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  // Si hubo un error en la llamada
+                  return Text(
+                    'Error: ${snapshot.error}',
+                    style: const TextStyle(color: Colors.red),
+                  );
+                } else if (snapshot.hasData) {
+                  // Si la llamada fue exitosa y hay datos
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Text(
+                      "La IA dice que ... ${snapshot.data!}", // Muestra el resultado
+                      style: GoogleFonts.poppins(
+                        fontSize: 22.0,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white70,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  );
+                } else {
+                  // Si no hay datos
+                  return const SizedBox();
+                }
+              },
             ),
             const SizedBox(height: 40),
             // Botón "Volver a jugar"
@@ -93,4 +114,3 @@ class Resultado extends StatelessWidget {
     );
   }
 }
-

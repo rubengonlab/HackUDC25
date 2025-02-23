@@ -5,10 +5,12 @@ import 'package:hackudc/screens/Partida/resultado.dart';
 class Fin extends StatelessWidget {
   final String preguntaAnterior;
   final String respuestaAnterior;
+  final String filmname;
 
   Fin({
     required this.preguntaAnterior,
     required this.respuestaAnterior,
+    required this.filmname,
     Key? key,
   }) : super(key: key);
 
@@ -139,7 +141,7 @@ class Fin extends StatelessWidget {
                   // Navegar a la siguiente pantalla
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Resultado(description: descripcionController.text)), // Aquí se coloca la pantalla siguiente
+                    MaterialPageRoute(builder: (context) => Resultado(description: descripcionController.text, filmname: filmname)), // Aquí se coloca la pantalla siguiente
                   );
                 },
                 child: const Text(
