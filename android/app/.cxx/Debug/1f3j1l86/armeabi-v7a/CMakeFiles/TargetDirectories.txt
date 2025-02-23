@@ -1,0 +1,2 @@
+/home/alvaro/HACK/HackUDC25/android/app/.cxx/Debug/1f3j1l86/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/alvaro/HACK/HackUDC25/android/app/.cxx/Debug/1f3j1l86/armeabi-v7a/CMakeFiles/rebuild_cache.dir
